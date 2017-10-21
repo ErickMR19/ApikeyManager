@@ -1,0 +1,31 @@
+<div class="table-container">
+  <table id="table-apikeys" class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+          <th>Correo</th>
+          <th>Api Key</th>
+          <th>Num de Requests</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @apikeys.each do |apikey| %>
+      <tr>
+        <td><%= apikey.email %></td>
+        <td><%= apikey.api_key %></td>
+        <td><%= apikey.num_requests %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<h2>Crear nueva Api Key</h2>
+
+
+<%= form_tag({controller: "api_key_manager", action: "create"}, id: "form-creator", class: "pure-form",  remote: true) do %>  
+    <fieldset>
+      <%= email_field_tag(:email, nil, placeholder: 'Correo Electrónico', class: "pure-input-1-2", required: 'required') %>
+      <%= submit_tag 'Guardar', class:  "pure-button pure-button-primary" %>
+    <fieldset>
+<% end %>

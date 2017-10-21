@@ -1,0 +1,13 @@
+<% if @newapikey.valid? %>
+  document.getElementById("table-apikeys").insertRow().innerHTML = "<td><%= @newapikey.email %></td><td><%= @newapikey.api_key %></td><td><%= @newapikey.num_requests %></td>";
+  document.getElementById("form-creator").reset();
+<% else %>
+  <% message_error = ""
+  @newapikey.errors.messages.each {
+    |error|
+
+    message_error += error[1][0]
+  } %>
+  alert("<%= message_error %>");
+<% end %>
+ 
